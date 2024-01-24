@@ -1,0 +1,12 @@
+<div class="content">
+      <form [formGroup]="form" (ngSubmit)="login()">
+        <mat-form-field><input matInput type="email" placeholder="Email" formControlName="email"/>
+        <mat-error>
+          Invalid email id
+        </mat-error>
+        </mat-form-field>
+        <div>
+        <button md-stroked-button type="submit"  [disabled]="form.invalid">Login</button>
+        </div>
+        </form>
+</div>
