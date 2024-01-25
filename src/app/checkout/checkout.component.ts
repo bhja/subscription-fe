@@ -65,7 +65,7 @@ export class CheckoutComponent implements OnInit{
           frameTarget: "checkout-container",
           frameInitialHeight: 200,
           frameStyle: "width: 100%; min-width: 200px; background-color: transparent; border: none;",
-          successUrl: 'http://localhost:success'
+          successUrl: 'http://localhost:4200/subscriptions'
         }
       }
     }).then(r => {
@@ -77,7 +77,7 @@ export class CheckoutComponent implements OnInit{
 
   load(price:any) :void {
     this.show= true;
-    console.log("testing the checkout functionality")
+
     let items =[
       {
         priceId:  price.priceId

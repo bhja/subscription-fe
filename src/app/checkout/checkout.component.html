@@ -11,11 +11,12 @@
       <button mat-flat-button (click)="load(price)">Sign up</button>
     </mat-card-content>
   </mat-card>
-  <mat-card fxFlex="25%" fxFlex.xs="100%" class="myCard" fxLayoutAlign="center center"
+  <mat-card fxFlex="25%" fxFlex.xs="100%" class="myCard"
             fxLayout="column wrap" *ngIf="checkout0">
    <mat-card-title>Summary</mat-card-title>
     <p>Subtotal {{checkout0.subtotal}}</p>
     <p>Total {{checkout0.total}}</p>
   </mat-card>
-  <div  class="checkout-container" ></div>
+  <div  class="checkout-container" fxFlex="50%" fxFlex.xs="100%" fxLayoutAlign="center center" fxLayout="column wrap"
+  ></div>
 </div>
