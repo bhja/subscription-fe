@@ -1,12 +1,13 @@
-<div class="content">
-  <mat-card >
+<div class="myCard">
+<mat-card >
     <mat-card-content >
          <mat-list *ngFor="let item of products;let last = last" >
-           <mat-list-item mat-ripple class="pathitem" style="line-height: 100px;" (dblclick)="loadprices(item)">
+           <mat-list-item   mat-ripple class="pathitem"
+                           style="line-height: 100px;" (dblclick)="loadprices(item)"
+                           matTooltip="{{item.productDescription}}">
              <p>{{item.productName}}</p>
            </mat-list-item>
-           <mat-divider _ngcontent-c1=""
-                        class="mat-divider mat-divider-horizontal"
+           <mat-divider class="mat-divider mat-divider-horizontal"
                         role="separator"
                         aria-orientation="horizontal" *ngIf="!last">
            </mat-divider>
@@ -15,7 +16,5 @@
   </mat-card>
 
 
-
 </div>
-
 

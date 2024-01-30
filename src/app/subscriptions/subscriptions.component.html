@@ -1,1 +1,45 @@
-<p>subscriptions works!</p>
+<div class="large-box" >
+<h2>My Subscriptions</h2>
+<!--<mat-card class="basic-container" *ngFor="let subscription of subscriptions ;let last=last">-->
+<!--  <p>-->
+<!--    {{subscription.subscriptionId}}-->
+<!--    {{subscription.status}}-->
+<!--  </p>-->
+<!--  <mat-card-actions *ngIf="subscription.status!='canceled'">-->
+<!--    <button mat-stroked-button color="primary" (click)="upgrade(subscription)">-->
+<!--      Upgrade-->
+<!--    </button>-->
+<!--    <button mat-stroked-button color="primary" (click)="cancel(subscription)">-->
+<!--      Cancel-->
+<!--    </button>-->
+<!--  </mat-card-actions>-->
+<!--  <mat-divider-->
+<!--    class="mat-divider mat-divider-horizontal"-->
+<!--    aria-orientation="horizontal" *ngIf="!last">-->
+<!--  </mat-divider>-->
+
+<!--</mat-card>-->
+  <mat-table #table [dataSource]="dataSource">
+    <ng-container matColumnDef="subscriptionId">
+      <mat-header-cell *matHeaderCellDef> SubscriptionId </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.subscriptionId}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="status">
+      <mat-header-cell *matHeaderCellDef> Status </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.status}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="actions">
+      <mat-header-cell *matHeaderCellDef >Actions</mat-header-cell>
+      <mat-cell *matCellDef="let row;">
+        <button mat-icon-button matTooltip="Activate" [disabled]="row.status!='trialing'" (click)="activate(row)">
+          <mat-icon>upgrade</mat-icon>
+        </button>
+        <button mat-icon-button [disabled]="row.status=='canceled'" (click)="cancel(row)">
+          <mat-icon color="warn" matTooltip="Cancel">cancel</mat-icon>
+        </button>
+      </mat-cell>
+    </ng-container>
+    <mat-header-row *matHeaderRowDef="columnsToDisplay"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: columnsToDisplay;"></mat-row>
+  </mat-table>
+</div>

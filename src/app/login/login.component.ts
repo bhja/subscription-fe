@@ -9,11 +9,11 @@ import {Router} from "@angular/router";
 @Component({
   selector: 'login',
   standalone: true,
-  imports: [
+    imports: [
 
-    MatFormField,MatInputModule,
-    FormsModule, ReactiveFormsModule, MatCardContent
-  ],
+        MatFormField, MatInputModule,
+        FormsModule, ReactiveFormsModule, MatCardContent, MatCard
+    ],
   templateUrl: './login.component.html',
   styleUrl: './login.component.css'
 })

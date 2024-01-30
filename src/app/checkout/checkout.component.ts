@@ -5,6 +5,9 @@ import {CheckoutOpenOptions, initializePaddle} from "@paddle/paddle-js";
 import {ActivatedRoute, Router} from "@angular/router";
 import {NgForOf, NgIf} from "@angular/common";
 import { MatGridListModule} from "@angular/material/grid-list";
+import {FormsModule} from "@angular/forms";
+import {MatChipRow} from "@angular/material/chips";
+import {MatButton} from "@angular/material/button";
 declare var total: any;
 @Component({
   selector: 'checkout',
@@ -14,7 +17,10 @@ declare var total: any;
     MatCardTitle,
     NgForOf,
     NgIf,
-    MatGridListModule
+    MatGridListModule,
+    FormsModule,
+    MatChipRow,
+    MatButton
   ],
   templateUrl: './checkout.component.html',
   styleUrl: './checkout.component.css'
@@ -25,12 +31,15 @@ export class CheckoutComponent implements OnInit{
   prices: any;
 
   product: any;
+  name:any;
   show:boolean = false;
   // @ts-ignore
   checkout0:any;
 
-  public constructor(private route:ActivatedRoute) {
-    this.product =  route.snapshot.paramMap.get("product");
+  public constructor(private route:ActivatedRoute,private r0:Router) {
+    this.product =  route.snapshot.paramMap.get("pId");
+    this.name= route.snapshot.paramMap.get("pName");
+
   }
 
   ngOnInit(): void {
@@ -51,9 +60,8 @@ export class CheckoutComponent implements OnInit{
           console.log("Checkout done");
         }
         if (event.name == "checkout.loaded") {
-          console.log("update the frame values", event);
           this.checkout0=event.data?.items.map(r=>r.recurring_totals)[0];
-          console.log(this.checkout0);
+          console.log(JSON.stringify(this.checkout0));
         }
       },
       checkout: {
@@ -106,8 +114,13 @@ export class CheckoutComponent implements OnInit{
 
 
   }
+  validateCode(){
 
+  }
 
+  back(){
+    this.r0.navigate(["/products"]);
+  }
 
 
 

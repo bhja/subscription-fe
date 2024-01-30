@@ -1,6 +1,7 @@
-<div class="content">
-  <mat-card fxFlex="25%" fxFlex.xs="100%" class="myCard" fxLayoutAlign="center center"
-            fxLayout="column wrap" *ngFor="let price of prices">
+<div class="basic-container" >
+  <button mat-stroked-button color="primary" (click)="back()">Back</button>
+  <h2>Product choices</h2>
+  <mat-card  *ngFor="let price of prices">
     <mat-card-content  *ngIf="price.status=='active'">
       <mat-card-title>
         {{price.name}}
@@ -8,14 +9,16 @@
       <p>
         {{price.description}}
       </p>
-      <button mat-flat-button (click)="load(price)">Sign up</button>
+      <button mat-stroked-button color="primary" (click)="load(price)">Sign up</button>
     </mat-card-content>
   </mat-card>
-  <mat-card fxFlex="25%" fxFlex.xs="100%" class="myCard"
-            fxLayout="column wrap" *ngIf="checkout0">
-   <mat-card-title>Summary</mat-card-title>
-    <p>Subtotal {{checkout0.subtotal}}</p>
-    <p>Total {{checkout0.total}}</p>
+  <mat-card style="text-align: center;background: beige" *ngIf="checkout0">
+   <mat-card-title >Order Summary</mat-card-title>
+    <mat-card-content >
+    <p><b>Product:</b>  {{name}}</p>
+    <p><b>Subtotal:</b>  {{checkout0.subtotal}}</p>
+    <p><b>Total:</b> {{checkout0.total}}</p>
+    </mat-card-content>
   </mat-card>
   <div  class="checkout-container" fxFlex="50%" fxFlex.xs="100%" fxLayoutAlign="center center" fxLayout="column wrap"
   ></div>
