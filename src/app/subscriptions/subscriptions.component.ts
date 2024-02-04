@@ -56,7 +56,7 @@ export class SubscriptionsComponent implements OnInit{
           action: "CANCEL"}
       }
 
-    axios.put("http://localhost:9091/api/paddle/subscriptions/"+subscription.subscriptionId,request).then(r=>
+    axios.put("http://localhost:9091/api/paddle/subscriptions/"+subscription.subscriptionId+"/cancel",request).then(r=>
     {this.getSubscription()})
   }
 

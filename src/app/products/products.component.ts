@@ -34,7 +34,7 @@ export class ProductsComponent implements OnInit,AfterViewInit{
       custom_data: data
     }
     axios.post("http://localhost:9091/api/paddle/customers",body).then(r=>{localStorage.setItem("pId",r.data.id);
-      localStorage.setItem("pdCustomerId",r.data.pdCustomerId)});
+      localStorage.setItem("pdCustomerId",r.data.customerId)});
     axios.get("http://localhost:9091/api/paddle/products").then(r=>this.products = r.data
     );
   }

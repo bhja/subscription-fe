@@ -39,7 +39,6 @@ export class CheckoutComponent implements OnInit{
   public constructor(private route:ActivatedRoute,private r0:Router) {
     this.product =  route.snapshot.paramMap.get("pId");
     this.name= route.snapshot.paramMap.get("pName");
-
   }
 
   ngOnInit(): void {
@@ -58,6 +57,7 @@ export class CheckoutComponent implements OnInit{
       environment: 'sandbox', token: token0, eventCallback: (event) => {
         if (event.name == "checkout.completed") {
           console.log("Checkout done");
+          //logic ....
         }
         if (event.name == "checkout.loaded") {
           this.checkout0=event.data?.items.map(r=>r.recurring_totals)[0];
@@ -101,6 +101,7 @@ export class CheckoutComponent implements OnInit{
         allowLogout : false
       }
     }
+    console.log(localStorage.getItem("pdCustomerId"));
     if(localStorage.getItem("pdCustomerId")==null){
       // @ts-ignore
       delete inputOptions.customer;
